@@ -35,6 +35,11 @@
   border-radius: 12px;
 }
 
+.expense-item_btn {
+  font-size: 1.1rem;
+  margin: 0.5rem;
+}
+
 @media (min-width: 580px) {
   .expense-item__description {
     flex-direction: row;
