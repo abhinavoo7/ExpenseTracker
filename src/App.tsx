@@ -1,6 +1,7 @@
 import './App.css'
 import Expenses from './components/Expenses/Expenses'
 import NewExpense from './components/NewExpense/NewExpense'
+import { useState } from 'react'
 
 function App() {
   const expenses = [
@@ -25,15 +26,26 @@ function App() {
     },
   ]
 
+  const [expenseList, setExpenses] = useState(expenses)
+
   const addExpenseDataHandler = (expenseData: ExpenseData) => {
     console.log('In app.tsx')
-    console.log(expenseData)
+    // console.log(expenseData)
+    const exp = {
+      id: expenseData.id!!,
+      title: expenseData.title,
+      amount: expenseData.amount,
+      date: expenseData.date,
+    }
+    expenses.push(exp)
+    setExpenses(expenses)
+    console.log(expenseList)
   }
 
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseDataHandler} />
-      <Expenses items={expenses} />
+      <Expenses items={expenseList} />
     </div>
   )
 }
