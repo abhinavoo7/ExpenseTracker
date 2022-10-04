@@ -25,12 +25,24 @@ function App() {
     },
   ]
 
+  const addExpenseDataHandler = (expenseData: ExpenseData) => {
+    console.log('In app.tsx')
+    console.log(expenseData)
+  }
+
   return (
     <div className="App">
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseDataHandler} />
       <Expenses items={expenses} />
     </div>
   )
 }
 
 export default App
+
+interface ExpenseData {
+  id?: string
+  title: string
+  amount: number
+  date: Date
+}
