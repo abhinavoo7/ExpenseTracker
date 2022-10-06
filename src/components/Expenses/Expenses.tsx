@@ -2,7 +2,7 @@ import ExpenseItem from './ExpenseItem'
 import './Expenses.css'
 import Card from '../UI/Card'
 import ExpenseFilter from './ExpenseFilter'
-import { JSXElementConstructor, ReactElement, useState } from 'react'
+import { useState } from 'react'
 
 interface Items {
   id?: string
@@ -39,17 +39,22 @@ function Expenses(props: Props) {
           onChangeFilter={filterChangeHandler}
         />
         <div>
-          {filteredExpenses.map((expense: Items) => {
-            return (
-              <ExpenseItem
-                key={expense.id}
-                title={expense.title}
-                amount={expense.amount}
-                date={expense.date!}
-              />
-            )
-          })}
+          {filteredExpenses.length === 0 ? (
+            <p className="noExpense">Sorry! No expenses found.</p>
+          ) : (
+            filteredExpenses.map((expense: Items) => {
+              return (
+                <ExpenseItem
+                  key={expense.id}
+                  title={expense.title}
+                  amount={expense.amount}
+                  date={expense.date!}
+                />
+              )
+            })
+          )}
         </div>
+        <div></div>
       </Card>
     </div>
   )
