@@ -24,6 +24,10 @@ function Expenses(props: Props) {
     setFilterYear(selectedYear)
   }
 
+  const filteredExpenses = props.items.filter(
+    (expenses) => expenses.date.getFullYear().toString() === filteredYear,
+  )
+
   // console.log('In Expenses.tsx')
   // console.log(props.items)
 
@@ -35,20 +39,16 @@ function Expenses(props: Props) {
           onChangeFilter={filterChangeHandler}
         />
         <div>
-          {props.items
-            .filter(
-              (x: Items) => x.date.getFullYear().toString() === filteredYear,
+          {filteredExpenses.map((expense: Items) => {
+            return (
+              <ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date!}
+              />
             )
-            .map((expense: Items) => {
-              return (
-                <ExpenseItem
-                  key={expense.id}
-                  title={expense.title}
-                  amount={expense.amount}
-                  date={expense.date!}
-                />
-              )
-            })}
+          })}
         </div>
       </Card>
     </div>
