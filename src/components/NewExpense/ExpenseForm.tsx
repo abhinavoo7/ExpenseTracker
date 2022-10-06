@@ -45,7 +45,6 @@ const ExpenseForm = (props: Props) => {
     event.preventDefault()
 
     const expenseData = {
-      id: Math.random().toString(),
       title: enteredTitle,
       date: new Date(enteredDate),
       amount: Number(enteredAmount),
@@ -74,7 +73,7 @@ const ExpenseForm = (props: Props) => {
           <input
             type="number"
             min="1"
-            step="0.1"
+            step="0.10"
             value={enteredAmount}
             onChange={amountInputHandler}
           />
@@ -104,7 +103,7 @@ interface Props {
 }
 
 interface ExpenseData {
-  id: string
+  id?: string
   title: string
   amount: number
   date: Date

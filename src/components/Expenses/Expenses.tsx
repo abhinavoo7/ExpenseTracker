@@ -5,7 +5,7 @@ import ExpenseFilter from './ExpenseFilter'
 import { JSXElementConstructor, ReactElement, useState } from 'react'
 
 interface Items {
-  id: string
+  id?: string
   title: string
   amount: number
   date: Date
@@ -35,16 +35,20 @@ function Expenses(props: Props) {
           onChangeFilter={filterChangeHandler}
         />
         <div>
-          {props.items.map((expense: Items, index) => {
-            return (
-              <ExpenseItem
-                key={index}
-                title={expense.title}
-                amount={expense.amount}
-                date={expense.date!}
-              />
+          {props.items
+            .filter(
+              (x: Items) => x.date.getFullYear().toString() === filteredYear,
             )
-          })}
+            .map((expense: Items) => {
+              return (
+                <ExpenseItem
+                  key={expense.id}
+                  title={expense.title}
+                  amount={expense.amount}
+                  date={expense.date!}
+                />
+              )
+            })}
         </div>
       </Card>
     </div>

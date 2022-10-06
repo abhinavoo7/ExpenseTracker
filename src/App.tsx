@@ -53,7 +53,7 @@ function App() {
 export default App
 
 interface ExpenseData {
-  id: string
+  id?: string
   title: string
   amount: number
   date: Date
