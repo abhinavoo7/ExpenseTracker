@@ -45,6 +45,7 @@ const ExpenseForm = (props: Props) => {
     event.preventDefault()
 
     const expenseData = {
+      id: Math.random().toString(),
       title: enteredTitle,
       date: new Date(enteredDate),
       amount: Number(enteredAmount),
@@ -103,6 +104,7 @@ interface Props {
 }
 
 interface ExpenseData {
+  id: string
   title: string
   amount: number
   date: Date

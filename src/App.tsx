@@ -4,7 +4,7 @@ import NewExpense from './components/NewExpense/NewExpense'
 import { useState } from 'react'
 
 function App() {
-  const expenses = [
+  const dummyExpenses: ExpenseData[] = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -26,22 +26,22 @@ function App() {
     },
   ]
 
-  const [expenseList, setExpenses] = useState(expenses)
+  const [expenseList, setExpenses] = useState(dummyExpenses)
 
-  const addExpenseDataHandler = (expenseData: ExpenseData) => {
+  const addExpenseDataHandler = (expense: ExpenseData) => {
     console.log('In app.tsx')
-    // console.log(expenseData)
-    const exp = {
-      id: expenseData.id!!,
-      title: expenseData.title,
-      amount: expenseData.amount,
-      date: expenseData.date,
-    }
-    expenses.push(exp)
-    setExpenses(expenses)
-    console.log(expenseList)
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses]
+    })
+
+    // setExpenses((prevExpenses)=>{
+    //   return [expenseData, ...prevExpense]
+    // })
+    // console.log('In app.tsx')
+    // console.log(expenseList)
   }
 
+  // console.log(expenseList)
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseDataHandler} />
@@ -53,7 +53,7 @@ function App() {
 export default App
 
 interface ExpenseData {
-  id?: string
+  id: string
   title: string
   amount: number
   date: Date
