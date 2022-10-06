@@ -5,7 +5,7 @@ import ExpenseFilter from './ExpenseFilter'
 import { JSXElementConstructor, ReactElement, useState } from 'react'
 
 interface Items {
-  id: string
+  id?: string
   title: string
   amount: number
   date: Date
@@ -24,6 +24,10 @@ function Expenses(props: Props) {
     setFilterYear(selectedYear)
   }
 
+  const filteredExpenses = props.items.filter(
+    (expenses) => expenses.date.getFullYear().toString() === filteredYear,
+  )
+
   // console.log('In Expenses.tsx')
   // console.log(props.items)
 
@@ -35,10 +39,10 @@ function Expenses(props: Props) {
           onChangeFilter={filterChangeHandler}
         />
         <div>
-          {props.items.map((expense: Items, index) => {
+          {filteredExpenses.map((expense: Items) => {
             return (
               <ExpenseItem
-                key={index}
+                key={expense.id}
                 title={expense.title}
                 amount={expense.amount}
                 date={expense.date!}

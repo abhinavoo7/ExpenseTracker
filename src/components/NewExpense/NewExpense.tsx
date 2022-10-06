@@ -21,7 +21,7 @@ const NewExpense = (props: Props) => {
 export default NewExpense
 
 interface ExpenseData {
-  id: string
+  id?: string
   title: string
   amount: number
   date: Date
