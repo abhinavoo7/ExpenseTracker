@@ -1,8 +1,9 @@
 import './NewExpense.css'
 import ExpenseForm from './ExpenseForm'
+import Items from '../../Interfaces/Items'
 
 const NewExpense = (props: Props) => {
-  const saveExpenseDataHandler = (enteredExpenseData: ExpenseData) => {
+  const saveExpenseDataHandler = (enteredExpenseData: Items) => {
     const expenseData = {
       ...enteredExpenseData,
       id: Math.random().toString(),
@@ -20,13 +21,6 @@ const NewExpense = (props: Props) => {
 
 export default NewExpense
 
-interface ExpenseData {
-  id?: string
-  title: string
-  amount: number
-  date: Date
-}
-
 interface Props {
-  onAddExpense: (expenseData: ExpenseData) => void
+  onAddExpense: (expenseData: Items) => void
 }

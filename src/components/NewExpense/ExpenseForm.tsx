@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import './ExpenseForm.css'
+import Items from '../../Interfaces/Items'
 
 const ExpenseForm = (props: Props) => {
   const [enteredTitle, setTitle] = useState('')
@@ -99,12 +100,5 @@ const ExpenseForm = (props: Props) => {
 export default ExpenseForm
 
 interface Props {
-  onSaveExpenseData: (expenseData: ExpenseData) => void
-}
-
-interface ExpenseData {
-  id?: string
-  title: string
-  amount: number
-  date: Date
+  onSaveExpenseData: (expenseData: Items) => void
 }

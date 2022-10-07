@@ -1,8 +1,9 @@
 import './ExpenseItem.css'
 import ExpenseDate from './ExpenseDate'
 import Card from '../UI/Card'
+import Items from '../../Interfaces/Items'
 
-function ExpenseItem(props: Props) {
+function ExpenseItem(props: Items) {
   // const [title, setTitle] = useState(props.title)
 
   // const clickhandler = () => {
@@ -32,10 +33,3 @@ function ExpenseItem(props: Props) {
 }
 
 export default ExpenseItem
-
-interface Props {
-  id?: string
-  title: string
-  amount: number
-  date: Date
-}

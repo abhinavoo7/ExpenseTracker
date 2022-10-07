@@ -3,13 +3,8 @@ import './Expenses.css'
 import Card from '../UI/Card'
 import ExpenseFilter from './ExpenseFilter'
 import { useState } from 'react'
-
-interface Items {
-  id?: string
-  title: string
-  amount: number
-  date: Date
-}
+import Items from '../../Interfaces/Items'
+import ExpensesList from './ExpensesList'
 
 interface Props {
   items: Items[]
@@ -33,29 +28,16 @@ function Expenses(props: Props) {
 
   return (
     <div>
-      <Card className="expenses">
-        <ExpenseFilter
-          selected={filteredYear}
-          onChangeFilter={filterChangeHandler}
-        />
-        <div>
-          {filteredExpenses.length === 0 ? (
-            <p className="noExpense">Sorry! No expenses found.</p>
-          ) : (
-            filteredExpenses.map((expense: Items) => {
-              return (
-                <ExpenseItem
-                  key={expense.id}
-                  title={expense.title}
-                  amount={expense.amount}
-                  date={expense.date!}
-                />
-              )
-            })
-          )}
-        </div>
-        <div></div>
-      </Card>
+      <li>
+        <Card className="expenses">
+          <ExpenseFilter
+            selected={filteredYear}
+            onChangeFilter={filterChangeHandler}
+          />
+          <ExpensesList items={filteredExpenses} />
+          <div></div>
+        </Card>
+      </li>
     </div>
   )
 }
