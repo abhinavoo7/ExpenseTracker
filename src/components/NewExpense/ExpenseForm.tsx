@@ -91,6 +91,9 @@ const ExpenseForm = (props: Props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.cancelAddingExpense}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
@@ -101,4 +104,5 @@ export default ExpenseForm
 
 interface Props {
   onSaveExpenseData: (expenseData: Items) => void
+  cancelAddingExpense: () => void
 }

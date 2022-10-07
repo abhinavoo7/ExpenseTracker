@@ -28,14 +28,13 @@ function Expenses(props: Props) {
 
   return (
     <div>
-      <li>
+      <li className="list-style">
         <Card className="expenses">
           <ExpenseFilter
             selected={filteredYear}
             onChangeFilter={filterChangeHandler}
           />
           <ExpensesList items={filteredExpenses} />
-          <div></div>
         </Card>
       </li>
     </div>

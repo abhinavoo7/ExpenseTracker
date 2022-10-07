@@ -6,6 +6,6 @@
   max-width: 95%;
 }
 
-.noExpense {
-  color: white;
+.list-style {
+  list-style: none;
 }
